@@ -1,9 +1,11 @@
 {assign var="noSidebar" value=true}
-{include file='header.tpl' menu="stream"}
+{include file='header.tpl'}
 
 <div class="page-header">
 	<h1>{$aLang.stream_menu}</h1>
 </div>
+
+{include file='menu.stream.tpl'}
 
 {if count($aStreamEvents)}
 	<ul class="list-unstyled stream-list" id="stream-list">

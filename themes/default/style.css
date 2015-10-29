@@ -6,6 +6,8 @@ a:focus { text-decoration: none; }
 
 
 /* ПЕРЕОПРЕДЕЛЯЕМ/ДОПИСЫВАЕМ BOOTSTRAP */
+.navbar { position: absolute; }
+
 .text-success { color: #090; }
 .text-info { color: #0074d9; }
 .text-danger { color: #f00; }
@@ -101,7 +103,18 @@ a.user-friends:hover { color: #f00; text-decoration: none; }
 
 
 /* ШАПКА САЙТА */
-#header .navbar h1.site-name { font-weight: bold; }
+#header { background-color: #000; min-height: 60px; }
+#header {
+	background-image: url("./images/header-bg.jpg");
+	background-position: center center;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#header .navbar .navbar-brand { font-weight: bold; }
 
 #header .navbar .nav > li > a img.avatar {
 	vertical-align: text-bottom;
@@ -110,19 +123,28 @@ a.user-friends:hover { color: #f00; text-decoration: none; }
 	-moz-border-radius: 9px;
 	border-radius: 9px;
 }
-#header .navbar .nav > li > a.new-messages { color: #fff500; }
 #header .navbar .nav .messages-count { color: #f00; margin-left: 3px; }
 #header .navbar .nav > li > a img.avatar { margin-right: 3px; }
 
 #header .jumbotron {
+	position: relative;
 	margin-bottom: 0;
-	background: #f7f9f9 url("./images/jum-bg.jpg") no-repeat center center;
+	padding: 60px 0 50px;
+	background-position: center center;
 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
+#header .jumbotron:after { background-color: rgba(0, 0, 0, 0.5); bottom: 0; content: ""; left: 0; height: 100%; position: absolute; right: 0; top: 0; z-index: 2; }
+#header .jumbotron .container {  z-index: 3; position: relative; height: 100%; }
+#header .jumbotron-inner { padding-top: 250px; }
+
+#header .jumbotron-topic .topic-title { color: #fff; font-size: 45px; }
+#header .jumbotron-topic .topic-info,
+#header .jumbotron-topic .topic-info a { color: rgba(255, 255, 255, 0.7); }
+#header .jumbotron-topic .topic-blog { text-transform: uppercase; }
 
 
 /* НАВИГАЦИЯ */
@@ -906,6 +928,8 @@ body.light .site-description { color: #727a90; font-size: 15px; margin-top: 15px
 }
 
 @media (max-width: 767px) {
+	.navbar-default { background-color: #fff; }
+	.navbar-inverse { background-color: #111; }
 	#footer .footer-list { margin-bottom: 40px; }
 }
 

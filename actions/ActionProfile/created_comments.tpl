@@ -1,4 +1,4 @@
-{include file='header.tpl' menu='people'}
+{include file='header.tpl'}
 
 <div class="action-header">
 	{include file='actions/ActionProfile/profile_top.tpl'}

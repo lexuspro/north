@@ -1,4 +1,4 @@
-{include file='header.tpl' menu='people'}
+{include file='header.tpl'}
 
 {assign var="oSession" value=$oUserProfile->getSession()}
 {assign var="oVote" value=$oUserProfile->getVote()}
@@ -11,10 +11,10 @@
 	ls.wall.init({
 		login:'{$oUserProfile->getLogin()}'
 	});
-	
+
 	jQuery(document).ready(function($){
 		$("textarea").charCount({
-			allowed: 250,		
+			allowed: 250,
 			warning: 0
 		});
 	});

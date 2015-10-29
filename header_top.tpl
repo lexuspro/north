@@ -1,7 +1,7 @@
 <header id="header" role="banner">
 	{hook run='header_banner_begin'}
 
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-navbar-collapse">
@@ -10,9 +10,7 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<h1 class="site-name">
-					<a class="navbar-brand" href="{cfg name='path.root.web'}">{if {cfg name='view.config_sitename'} == true}{cfg name='view.name'}{else}{cfg name='view.own_sitename'}{/if}</a>
-				</h1>
+				<a class="navbar-brand" href="{cfg name='path.root.web'}">{if {cfg name='view.config_sitename'} == true}{cfg name='view.name'}{else}{cfg name='view.own_sitename'}{/if}</a>
 			</div>
 
 			{hook run='userbar_nav'}
@@ -30,6 +28,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					{if $oUserCurrent}
+						<li><a href="{router page='topic'}add/" class="btn-write" id="modal_write_show" title="{$aLang.block_create}"><span class="glyphicon glyphicon-pencil"></span></a></li>
 						{if $iUserCurrentCountTalkNew}
 							<li>
 								<a href="{router page='talk'}" class="new-messages" title="{if $iUserCurrentCountTalkNew}{$aLang.user_privat_messages_new}{/if}">
@@ -63,6 +62,10 @@
 			</div>
 		</div>
 	</nav>
+
+	{if $jumbotron}
+		{include file="jumbotron.$jumbotron.tpl"}
+	{/if}
 
 	{hook run='header_banner_end'}
 </header>

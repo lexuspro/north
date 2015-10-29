@@ -130,7 +130,6 @@
 
 	<div id="page-wrapper">
 		{include file='header_top.tpl'}
-		{include file='nav.tpl'}
 
 		{hook run='content_top'}
 

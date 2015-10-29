@@ -1,9 +1,9 @@
-Copyright © 2013 Kulesh Uladzimir
+Copyright © 2015 Kulesh Uladzimir
 
 Contact e-mail: v.a.kulesh@yandex.ru
 ------------------------------------------------------
 
 Ссылка на кастомизированную страницу Бутстрапа:
-http://getbootstrap.com/customize/?id=341a41b4703c796f96e3
+http://getbootstrap.com/customize/?id=6fadd7247d0762318cb5
 
 ------------------------------------------------------

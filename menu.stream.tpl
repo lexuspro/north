@@ -1,9 +1,9 @@
-<ul class="nav nav-pills">
+<ul class="hidden-xs nav nav-pills nav-filter-wrapper">
 	{if $oUserCurrent}
 		<li {if $sMenuItemSelect=='user'}class="active"{/if}><a href="{router page='stream'}user/">{$aLang.stream_menu_user}</a></li>
 	{/if}
 	<li {if $sMenuItemSelect=='all'}class="active"{/if}><a href="{router page='stream'}all/">{$aLang.stream_menu_all}</a></li>
-	
+
 	{hook run='menu_stream_item'}
 </ul>
 

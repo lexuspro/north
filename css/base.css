@@ -18,7 +18,6 @@ a.link-dotted:hover { text-decoration: none; }
 
 
 /* Шапка сайта */
-#header .navbar h1.site-name { margin: 0; }
 #header .navbar .nav > li > a img.avatar { width: 18px; height: 18px; vertical-align: top; }
 #header .navbar .nav > li > a.new-messages span { font-size: 12px; top: 1px; }
 
@@ -51,7 +50,7 @@ a.link-dotted:hover { text-decoration: none; }
 body.light { padding-bottom: 40px; padding-top: 40px; }
 body.light .site-info { max-width: 400px; margin-bottom: 60px; }
 body.light .light-form { max-width: 400px; padding: 20px; }
-body.light .light-form .page-header h2, 
+body.light .light-form .page-header h2,
 body.light .light-form .page-header h3 { margin-top: 0; }
 
 
@@ -222,7 +221,7 @@ select, input[type="file"] { height: auto; }
 
 
 /* -------------------------------------------------------------------
-	ИКОНКИ 
+	ИКОНКИ
 ------------------------------------------------------------------- */
 
 .icon-contact { display: inline-block; width: 16px; height: 16px; vertical-align: text-top; background: url(../images/icons-contact.png) no-repeat; }
@@ -281,8 +280,8 @@ select, input[type="file"] { height: auto; }
 .table.table-users .cell-rating,
 .table.table-users .cell-skill { width: 72px; text-align: center; }
 
-.table.table-users tbody .cell-date, 
-.table.table-users tbody .cell-skill, 
+.table.table-users tbody .cell-date,
+.table.table-users tbody .cell-skill,
 .table.table-users tbody .cell-rating { vertical-align: middle; }
 
 
@@ -494,7 +493,7 @@ select, input[type="file"] { height: auto; }
 .modal { overflow-y: auto; }
 .modal .modal-dialog {
 	overflow: hidden;
-	
+
 	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -625,19 +624,19 @@ select, input[type="file"] { height: auto; }
 	ВСПЛЫВАЮЩИЕ УВЕДОМЛЕНИЯ
 -------------------------------------------- */
 
-#notifier { 
-	position: fixed; 
-	z-index: 9999; 
-	
+#notifier {
+	position: fixed;
+	z-index: 9999;
+
 	/* IE 6 Fix */
-	_position: absolute; 
+	_position: absolute;
 	_top: expression( eval(document.documentElement.scrollBottom) + 10 +"px" );
 }
 
 
-#notifier .n-box { 
-	position: relative; 
-	padding: 10px 15px 11px; 
+#notifier .n-box {
+	position: relative;
+	padding: 10px 15px 11px;
 	margin-bottom: 10px;
 	cursor: pointer;
 }
