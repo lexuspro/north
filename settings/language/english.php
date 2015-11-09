@@ -15,7 +15,7 @@ return array(
 	'footer_menu_project_advert' => 'Ads',
 	'footer_menu_project_help' => 'Help',
 
-	'blog_expand_info' => 'About blog',
+	'blog_admins' => 'Blog Admins',
 
 	'topic_create_submit_preview_close' => 'Close',
 

@@ -1,4 +1,4 @@
-{if $aPaging and $aPaging.iCountPage>1} 
+{if $aPaging and $aPaging.iCountPage>1}
 	<div class="paging">
 		<ul class="pagination">
 			{if $aPaging.iPrevPage}
@@ -6,23 +6,23 @@
 			{else}
 				<li class="disabled prev"><span>&larr; {$aLang.paging_previos}</span></li>
 			{/if}
-			
-			
-			{if $aPaging.iCurrentPage>1}<li><a href="{$aPaging.sBaseUrl}/{$aPaging.sGetParams}" title="{$aLang.paging_first}">{$aLang.paging_first}</a></li>{/if}
-			
+
+
+			{if $aPaging.iCurrentPage>1}<li class="hidden-xs"><a href="{$aPaging.sBaseUrl}/{$aPaging.sGetParams}" title="{$aLang.paging_first}">{$aLang.paging_first}</a></li>{/if}
+
 			{foreach from=$aPaging.aPagesLeft item=iPage}
-				<li><a href="{$aPaging.sBaseUrl}/page{$iPage}/{$aPaging.sGetParams}">{$iPage}</a></li>
+				<li class="hidden-xs"><a href="{$aPaging.sBaseUrl}/page{$iPage}/{$aPaging.sGetParams}">{$iPage}</a></li>
 			{/foreach}
-			
-			<li class="active"><span>{$aPaging.iCurrentPage}</span></li>
-			
+
+			<li class="hidden-xs active"><span>{$aPaging.iCurrentPage}</span></li>
+
 			{foreach from=$aPaging.aPagesRight item=iPage}
-				<li><a href="{$aPaging.sBaseUrl}/page{$iPage}/{$aPaging.sGetParams}">{$iPage}</a></li>
+				<li class="hidden-xs"><a href="{$aPaging.sBaseUrl}/page{$iPage}/{$aPaging.sGetParams}">{$iPage}</a></li>
 			{/foreach}
-			
-			{if $aPaging.iCurrentPage<$aPaging.iCountPage}<li><a href="{$aPaging.sBaseUrl}/page{$aPaging.iCountPage}/{$aPaging.sGetParams}" title="{$aLang.paging_last}">{$aLang.paging_last}</a></li>{/if}
-			
-			
+
+			{if $aPaging.iCurrentPage<$aPaging.iCountPage}<li class="hidden-xs"><a href="{$aPaging.sBaseUrl}/page{$aPaging.iCountPage}/{$aPaging.sGetParams}" title="{$aLang.paging_last}">{$aLang.paging_last}</a></li>{/if}
+
+
 			{if $aPaging.iNextPage}
 				<li class="next"><a href="{$aPaging.sBaseUrl}/page{$aPaging.iNextPage}/{$aPaging.sGetParams}" class="js-paging-next-page" title="{$aLang.paging_next}">{$aLang.paging_next} &rarr;</a></li>
 			{else}

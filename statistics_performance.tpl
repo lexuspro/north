@@ -1,3 +1,4 @@
+<!--
 {if $bIsShowStatsPerformance and $oUserCurrent and $oUserCurrent->isAdministrator()}
 	<div id="stat-performance">
 		<div class="container">
@@ -32,3 +33,4 @@
 		</div>
 	</div>
 {/if}
+-->

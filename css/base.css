@@ -527,40 +527,6 @@ select, input[type="file"] { height: auto; }
 
 
 /* --------------------------------------------
-	БЛОГ
--------------------------------------------- */
-
-.blog { overflow: hidden; }
-
-
-/* Header */
-.blog .blog-header { margin-bottom: 20px; min-height: 35px; padding: 0 100px 0 50px; position: relative; }
-.blog .blog-header h1 { margin-bottom: 5px; margin-top: 0; }
-.blog .blog-header h1 span { cursor: help; vertical-align: text-top; }
-.blog .blog-header .avatar { position: absolute; top: 1px; left: 0; height: 35px; width: 35px; }
-
-.blog .blog-header .vote { position: absolute; top: 0; right: 0; }
-.blog .blog-header .vote-label { text-align: center; }
-
-
-/* Blog Mini */
-.blog-mini .blog-mini-header { text-align: right; }
-.blog-mini .blog-mini-header a { margin-left: 10px; }
-.blog-mini .blog-mini-header .btn { margin-left: 10px; }
-
-
-/* Footer */
-.blog .blog-footer { padding-top: 20px; }
-
-.blog-info { margin: 0; }
-.blog-info dt { text-align: left; font-weight: normal; }
-.blog-info dd { margin-left: 160px; border-bottom: 1px solid transparent; }
-
-.user-avatar img { margin-right: 1px; width: 16px; height: 16px; vertical-align: text-bottom; }
-
-
-
-/* --------------------------------------------
 	СТРАНИЦА ПОЛЬЗОВАТЕЛЯ
 -------------------------------------------- */
 

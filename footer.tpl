@@ -10,7 +10,7 @@
 
 		<footer id="footer">
 			{include file='blocks.tpl' group='footer-top'}
-
+			
 			<div class="footer-center">
 				<div class="container">
 					<div class="row">
@@ -24,7 +24,7 @@
 							</h5>
 							{$aLang.footer_menu_project_info}
 						</div>
-
+						
 						<div class="col-sm-4 col-lg-2">
 							{if $oUserCurrent}
 								<ul class="list-unstyled footer-list">
@@ -44,7 +44,7 @@
 								</ul>
 							{/if}
 						</div>
-
+						
 						<div class="col-sm-4 col-lg-2">
 							<ul class="list-unstyled footer-list">
 								<li class="footer-list-header">{$aLang.footer_menu_navigate_title}</li>
@@ -55,7 +55,7 @@
 								{hook run='footer_menu_navigate_item'}
 							</ul>
 						</div>
-
+						
 						<div class="col-sm-4 col-lg-2">
 							<ul class="list-unstyled footer-list">
 								<li class="footer-list-header">{$aLang.footer_menu_navigate_info}</li>
@@ -67,19 +67,19 @@
 							</ul>
 						</div>
 					</div>
-
+					
 					{hook run='footer_end'}
 				</div>
 			</div>
-
+			
 			<div class="footer-bottom">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6">
-							{hook run='copyright'}.
+							{hook run='copyright'}. 
 							Template based on "Developer-Kit" by <a href="http://kulesh-vladimir.by/">вOFFка</a>
 						</div>
-
+						
 						<div class="col-sm-6 text-right social-icons">
 							<a href="#" rel="nofollow"><span class="icon-facebook"></span></a>
 							<a href="#" rel="nofollow"><span class="icon-gplus"></span></a>

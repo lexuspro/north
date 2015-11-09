@@ -15,7 +15,7 @@ return array(
 	'footer_menu_project_advert' => 'Реклама',
 	'footer_menu_project_help' => 'Помощь',
 
-	'blog_expand_info' => 'О блоге',
+	'blog_admins' => 'Руководство блога',
 
 	'topic_create_submit_preview_close' => 'Свернуть',
 

@@ -3,13 +3,6 @@
 {assign var="oVote" value=$oBlog->getVote()}
 
 
-<script type="text/javascript">
-	jQuery(function($){
-		ls.lang.load({lang_load name="blog_fold_info,blog_expand_info"});
-	});
-</script>
-
-
 {if $oUserCurrent and $oUserCurrent->isAdministrator()}
 	<div class="modal fade in modal-login" id="blog_delete_form">
 		<div class="modal-dialog">
@@ -46,112 +39,6 @@
 	</div>
 {/if}
 
-
-<div class="blog">
-	<header class="blog-header">
-		<div id="vote_area_blog_{$oBlog->getId()}" class="small vote {if $oBlog->getRating() > 0}vote-count-positive{elseif $oBlog->getRating() < 0}vote-count-negative{/if} {if $oVote} voted {if $oVote->getDirection()>0}voted-up{elseif $oVote->getDirection()<0}voted-down{/if}{/if}">
-			<div class="text-muted vote-label">Рейтинг</div>
-			<a href="#" class="vote-down" onclick="return ls.vote.vote({$oBlog->getId()},this,-1,'blog');"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-			<div id="vote_total_blog_{$oBlog->getId()}" class="vote-count count" title="{$aLang.blog_vote_count}: {$oBlog->getCountVote()}">{if $oBlog->getRating() > 0}+{/if}{$oBlog->getRating()}</div>
-			<a href="#" class="vote-up" onclick="return ls.vote.vote({$oBlog->getId()},this,1,'blog');"><span class="glyphicon glyphicon-thumbs-up"></span></a>
-		</div>
-
-		<img src="{$oBlog->getAvatarPath(48)}" class="avatar" />
-
-		<h1>{$oBlog->getTitle()|escape:'html'}{if $oBlog->getType()=='close'} <span title="{$aLang.blog_closed}" class="glyphicon glyphicon-lock"></span>{/if}</h1>
-
-		{if $oUserCurrent and ($oUserCurrent->getId()==$oBlog->getOwnerId() or $oUserCurrent->isAdministrator() or $oBlog->getUserIsAdministrator() )}
-			<ul class="small list-unstyled list-inline actions">
-				<li><a href="{router page='blog'}edit/{$oBlog->getId()}/" title="{$aLang.blog_edit}" class="actions-edit">{$aLang.blog_edit}</a></li>
-				<li>
-					{if $oUserCurrent->isAdministrator()}
-						<a href="#" title="{$aLang.blog_delete}" id="blog_delete_show" class="actions-delete">{$aLang.blog_delete}</a>
-					{else}
-						<a href="{router page='blog'}delete/{$oBlog->getId()}/?security_ls_key={$LIVESTREET_SECURITY_KEY}" title="{$aLang.blog_delete}" onclick="return confirm('{$aLang.blog_admin_delete_confirm}');" class="actions-delete">{$aLang.blog_delete}</a>
-					{/if}
-				</li>
-			</ul>
-		{/if}
-	</header>
-
-
-	<div class="blog-mini" id="blog-mini">
-		<div class="row">
-			<div class="col-sm-6 small text-muted">
-				<span id="blog_user_count_{$oBlog->getId()}">{$iCountBlogUsers}</span> {$iCountBlogUsers|declension:$aLang.reader_declension:'russian'},
-				{$oBlog->getCountTopic()} {$oBlog->getCountTopic()|declension:$aLang.topic_declension:'russian'}
-			</div>
-			<div class="col-sm-6 blog-mini-header">
-				<a href="#" class="small link-dotted" onclick="ls.blog.toggleInfo(); return false;">{$aLang.blog_expand_info}</a>
-				<a href="{router page='rss'}blog/{$oBlog->getUrl()}/" class="small">RSS</a>
-				{if $oUserCurrent and $oUserCurrent->getId()!=$oBlog->getOwnerId()}
-					<button type="submit" class="btn btn-success btn-sm{if $oBlog->getUserIsJoin()} active{/if}" id="button-blog-join-first-{$oBlog->getId()}" data-button-additional="button-blog-join-second-{$oBlog->getId()}" data-only-text="1" onclick="ls.blog.toggleJoin(this, {$oBlog->getId()}); return false;">{if $oBlog->getUserIsJoin()}{$aLang.blog_leave}{else}{$aLang.blog_join}{/if}</button>
-				{/if}
-			</div>
-		</div>
-	</div>
-
-
-	<div class="blog-more-content" id="blog-more-content" style="display: none;">
-		<div class="blog-content">
-			<p class="blog-description">{$oBlog->getDescription()}</p>
-		</div>
-
-		<footer class="small blog-footer">
-			{hook run='blog_info_begin' oBlog=$oBlog}
-
-			<div class="row">
-				<div class="col-sm-6">
-					<dl class="dl-horizontal blog-info">
-						<dt>{$aLang.infobox_blog_create}</dt>
-						<dd>{date_format date=$oBlog->getDateAdd() format="j F Y"}</dd>
-
-						<dt>{$aLang.infobox_blog_topics}</dt>
-						<dd>{$oBlog->getCountTopic()}</dd>
-
-						<dt><a href="{$oBlog->getUrlFull()}users/">{$aLang.infobox_blog_users}</a></dt>
-						<dd>{$iCountBlogUsers}</dd>
-
-						<dt>{$aLang.infobox_blog_rating}</dt>
-						<dd class="text-success rating">{$oBlog->getRating()}</dd>
-					</dl>
-				</div>
-
-				<div class="col-sm-6">
-					<strong>{$aLang.blog_user_administrators} ({$iCountBlogAdministrators}):</strong><br />
-					<span class="user-avatar">
-						<a href="{$oUserOwner->getUserWebPath()}"><img src="{$oUserOwner->getProfileAvatarPath(24)}" alt="avatar" /></a>
-						<a href="{$oUserOwner->getUserWebPath()}">{$oUserOwner->getLogin()}</a>
-					</span>
-					{if $aBlogAdministrators}
-						{foreach from=$aBlogAdministrators item=oBlogUser}
-							{assign var="oUser" value=$oBlogUser->getUser()}
-							<span class="user-avatar">
-								<a href="{$oUser->getUserWebPath()}"><img src="{$oUser->getProfileAvatarPath(24)}" alt="avatar" /></a>
-								<a href="{$oUser->getUserWebPath()}">{$oUser->getLogin()}</a>
-							</span>
-						{/foreach}
-					{/if}<br /><br />
-
-					<strong>{$aLang.blog_user_moderators} ({$iCountBlogModerators}):</strong><br />
-					{if $aBlogModerators}
-						{foreach from=$aBlogModerators item=oBlogUser}
-							{assign var="oUser" value=$oBlogUser->getUser()}
-							<span class="user-avatar">
-								<a href="{$oUser->getUserWebPath()}"><img src="{$oUser->getProfileAvatarPath(24)}" alt="avatar" /></a>
-								<a href="{$oUser->getUserWebPath()}">{$oUser->getLogin()}</a>
-							</span>
-						{/foreach}
-					{else}
-						<span class="text-muted">{$aLang.blog_user_moderators_empty}</span>
-					{/if}
-				</div>
-			</div>
-
-			{hook run='blog_info_end' oBlog=$oBlog}
-		</footer>
-	</div>
-</div>
 
 {hook run='blog_info' oBlog=$oBlog}
 
