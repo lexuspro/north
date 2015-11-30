@@ -1,7 +1,5 @@
-{include file='header.tpl'}
+{include file='header.tpl' jumbotron='profile'}
 
-
-{include file='actions/ActionProfile/profile_top.tpl'}
 
 {include file='user_list.tpl' aUsersList=$aFriends}
 

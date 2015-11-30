@@ -1,7 +1,5 @@
-{include file='header.tpl'}
+{include file='header.tpl' jumbotron='profile'}
 
-
-{include file='actions/ActionProfile/profile_top.tpl'}
 
 {if count($aStreamEvents)}
 	<ul class="list-unstyled stream-list" id="stream-list">

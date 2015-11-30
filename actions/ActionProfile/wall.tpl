@@ -1,10 +1,7 @@
-{include file='header.tpl'}
+{include file='header.tpl' jumbotron='profile'}
 
 {assign var="oSession" value=$oUserProfile->getSession()}
 {assign var="oVote" value=$oUserProfile->getVote()}
-
-
-{include file='actions/ActionProfile/profile_top.tpl'}
 
 
 <script type="text/javascript">

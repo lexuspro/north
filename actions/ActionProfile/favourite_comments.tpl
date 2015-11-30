@@ -1,7 +1,6 @@
-{include file='header.tpl'}
+{include file='header.tpl' jumbotron='profile'}
 
 <div class="action-header">
-	{include file='actions/ActionProfile/profile_top.tpl'}
 	{include file='menu.profile_favourite.tpl'}
 </div>
 

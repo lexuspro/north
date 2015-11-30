@@ -1,12 +1,9 @@
 {assign var="sMenuItemSelect" value='profile'}
-{include file='header.tpl'}
+{include file='header.tpl' jumbotron='profile'}
 
 {assign var="oSession" value=$oUserProfile->getSession()}
 {assign var="oVote" value=$oUserProfile->getVote()}
 {assign var="oGeoTarget" value=$oUserProfile->getGeoTarget()}
-
-
-{include file='actions/ActionProfile/profile_top.tpl'}
 
 
 {if $oUserProfile->getProfileAbout()}
@@ -18,7 +15,6 @@
 
 
 <div class="row">
-
 	<div class="col-sm-6">
 		{assign var="aUserFieldValues" value=$oUserProfile->getUserFieldValues(true,array(''))}
 		{if $oUserProfile->getProfileSex()!='other' || $oUserProfile->getProfileBirthday() || $oGeoTarget || $oUserProfile->getProfileAbout() || count($aUserFieldValues)}
@@ -111,7 +107,6 @@
 			</table>
 		{/if}
 	</div>
-
 </div>
 
 
