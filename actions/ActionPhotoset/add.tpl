@@ -20,16 +20,16 @@
 </script>
 
 
-<div class="modal fade in modal-login" id="window_login_form">
+<div class="modal fade in modal-photoset" id="modal-photoset-upload">
 	<div class="modal-dialog">
 		<div class="modal-content">
-		
+
 			<form id="photoset-upload-form" method="POST" enctype="multipart/form-data" onsubmit="return false;" class="modal-image-upload">
 				<header class="modal-header">
 					<button type="button" class="close jqmClose" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title">{$aLang.uploadimg}</h4>
 				</header>
-	
+
 				<div id="topic-photo-upload-input" class="topic-photo-upload-input modal-body">
 					<div class="form-group">
 						<label for="photoset-upload-file">{$aLang.topic_photoset_choose_image}</label>
@@ -47,33 +47,33 @@
 		</div>
 	</div>
 </div>
-	
+
 {hook run='add_topic_photoset_begin'}
 
 <form action="" method="POST" enctype="multipart/form-data" id="form-topic-add" class="wrapper-content">
 	{hook run='form_add_topic_photoset_begin'}
-	
-	
-	<input type="hidden" name="security_ls_key" value="{$LIVESTREET_SECURITY_KEY}" /> 
-	
+
+
+	<input type="hidden" name="security_ls_key" value="{$LIVESTREET_SECURITY_KEY}" />
+
 	<div class="form-group">
 		<label for="blog_id">{$aLang.topic_create_blog}</label>
 		<select name="blog_id" id="blog_id" onChange="ls.blog.loadInfo(jQuery(this).val());" class="form-control">
 			<option value="0">{$aLang.topic_create_blog_personal}</option>
 			{foreach from=$aBlogsAllow item=oBlog}
 				<option value="{$oBlog->getId()}" {if $_aRequest.blog_id==$oBlog->getId()}selected{/if}>{$oBlog->getTitle()|escape:'html'}</option>
-			{/foreach}     					
+			{/foreach}
 		</select>
 		<p class="help-block"><small>{$aLang.topic_create_blog_notice}</small></p>
 	</div>
-	
-	
+
+
 	<script type="text/javascript">
 		jQuery(document).ready(function($){
 			ls.blog.loadInfo($('#blog_id').val());
 		});
 	</script>
-	
+
 	<div class="form-group">
 		<label for="topic_title">{$aLang.topic_create_title}</label>
 		<input type="text" id="topic_title" name="topic_title" value="{$_aRequest.topic_title}" class="form-control" />
@@ -87,23 +87,23 @@
 			{include file='tags_help.tpl' sTagsTargetId="topic_text"}
 		{/if}
 	</div>
-	
+
 	<div class="topic-photo-upload">
 		<h4>{$aLang.topic_photoset_upload_title}</h4>
-		
+
 		<div class="small text-muted topic-photo-upload-rules">
 			{$aLang.topic_photoset_upload_rules|ls_lang:"SIZE%%`$oConfig->get('module.topic.photoset.photo_max_size')`":"COUNT%%`$oConfig->get('module.topic.photoset.count_photos_max')`"}
 		</div>
-		
+
 		<input type="hidden" name="topic_main_photo" id="topic_main_photo" value="{$_aRequest.topic_main_photo}" />
-		
+
 		<ul id="swfu_images" class="small list-unstyled">
 			{if count($aPhotos)}
 				{foreach from=$aPhotos item=oPhoto}
 					{if $_aRequest.topic_main_photo && $_aRequest.topic_main_photo == $oPhoto->getId()}
 						{assign var=bIsMainPhoto value=true}
 					{/if}
-				
+
 					<li id="photo_{$oPhoto->getId()}" {if $bIsMainPhoto}class="marked-as-preview"{/if}>
 						<img src="{$oPhoto->getWebPath('100crop')}" alt="image" />
 						<textarea onBlur="ls.photoset.setPreviewDescription({$oPhoto->getId()}, this.value)" class="form-control">{$oPhoto->getDescription()}</textarea>
@@ -117,12 +117,12 @@
 							{/if}
 						</span>
 					</li>
-				
+
 					{assign var=bIsMainPhoto value=false}
 				{/foreach}
 			{/if}
 		</ul>
-		
+
 		<a href="javascript:ls.photoset.showForm()" id="photoset-start-upload">{$aLang.topic_photoset_upload_choose}</a>
 	</div>
 
@@ -151,17 +151,17 @@
 	{/if}
 
 	<input type="hidden" name="topic_type" value="photoset" />
-	
+
 	{hook run='form_add_topic_photoset_end'}
 	<br />
-	
+
 	<button type="submit" name="submit_topic_publish" id="submit_topic_publish" class="btn btn-success pull-right">{$aLang.topic_create_submit_publish}</button>
 	<button type="submit" name="submit_preview" onclick="jQuery('#text_preview').parent().show(); ls.topic.preview('form-topic-add','text_preview'); return false;" class="btn btn-default">{$aLang.topic_create_submit_preview}</button>
 	<button type="submit" name="submit_topic_save" id="submit_topic_save" class="btn btn-default">{$aLang.topic_create_submit_save}</button>
 </form>
 
 <div class="topic-preview" id="text_preview"></div>
-	
+
 {hook run='add_topic_photoset_end'}
 
 

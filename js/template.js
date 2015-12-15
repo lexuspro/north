@@ -1,9 +1,9 @@
 jQuery(document).ready(function($){
 	// Хук начала инициализации javascript-составляющих шаблона
 	ls.hook.run('ls_template_init_start',[],window);
-	
+
 	$('html').removeClass('no-js');
-	
+
 	// Определение браузера
 	if ($.browser.opera) {
 		$('body').addClass('opera opera' + parseInt($.browser.version));
@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
 			$('body').addClass('ie' + parseInt($.browser.version));
 		}
 	}
-	 
+
 	// Всплывающие окна
 	$('#window_login_form').jqm();
 	$('#blog_delete_form').jqm({trigger: '#blog_delete_show'});
@@ -31,8 +31,11 @@ jQuery(document).ready(function($){
 	$('#modal_write').jqm({trigger: '#modal_write_show'});
 	$('#foto-resize').jqm({modal: true});
 	$('#avatar-resize').jqm({modal: true});
-	$('#userfield_form').jqm({toTop: true}); 
-	$('#photoset-upload-form').jqm({trigger: '#photoset-start-upload'});
+	$('#userfield_form').jqm({toTop: true});
+	$('#modal-photoset-upload').jqm({trigger: '#photoset-start-upload'});
+	ls.photoset.closeForm = function() {
+		$('#modal-photoset-upload').jqmHide();
+	}
 
 	$('.js-registration-form-show').click(function(){
 		if (ls.blocks.switchTab('registration','popup-login')) {
@@ -51,43 +54,43 @@ jQuery(document).ready(function($){
 		}
 		return false;
 	});
-	
+
 	// Datepicker
 	 /**
 	  * TODO: навесить языки на datepicker
 	  */
-	$('.date-picker').datepicker({ 
+	$('.date-picker').datepicker({
 		dateFormat: 'dd.mm.yy',
 		dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
 		monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
 		firstDay: 1
 	});
-	
-	
+
+
 	// Поиск по тегам
 	$('.js-tag-search-form').submit(function(){
 		window.location = aRouter['tag']+encodeURIComponent($(this).find('.js-tag-search').val())+'/';
 		return false;
 	});
-	
-	
+
+
 	// Автокомплит
 	ls.autocomplete.add($(".autocomplete-tags-sep"), aRouter['ajax']+'autocompleter/tag/', true);
 	ls.autocomplete.add($(".autocomplete-tags"), aRouter['ajax']+'autocompleter/tag/', false);
 	ls.autocomplete.add($(".autocomplete-users-sep"), aRouter['ajax']+'autocompleter/user/', true);
 	ls.autocomplete.add($(".autocomplete-users"), aRouter['ajax']+'autocompleter/user/', false);
 
-	
+
 	// Скролл
 	$(window)._scrollable();
 
-	
+
 	// Тул-бар топиков
 	ls.toolbar.topic.init();
 	// Кнопка "UP"
 	ls.toolbar.up.init();
 
-	
+
 	// Всплывающие сообщения
 	if (ls.registry.get('block_stream_show_tip')) {
 		$('.js-title-comment, .js-title-topic').poshytip({
@@ -100,7 +103,7 @@ jQuery(document).ready(function($){
 			showTimeout: 1000
 		});
 	}
-	
+
 	$('.js-infobox-vote-topic').poshytip({
 		content: function() {
 			var id = $(this).attr('id').replace('vote_total_topic_','vote-info-topic-');
@@ -114,7 +117,7 @@ jQuery(document).ready(function($){
 		liveEvents: true,
 		showTimeout: 100
 	});
-	
+
 	$('.js-tip-help').poshytip({
 		className: 'infobox-standart',
 		alignTo: 'target',
@@ -124,7 +127,7 @@ jQuery(document).ready(function($){
 		liveEvents: true,
 		showTimeout: 500
 	});
-	
+
 	$('.js-infobox').poshytip({
 		className: 'infobox-standart',
 		liveEvents: true,
@@ -133,11 +136,11 @@ jQuery(document).ready(function($){
 
 	// подсветка кода
 	prettyPrint();
-	
+
 	// эмуляция border-sizing в IE
 	var inputs = $('input.input-text, textarea');
 	ls.ie.bordersizing(inputs);
-	
+
 	// эмуляция placeholder'ов в IE
 	inputs.placeholder();
 
@@ -157,14 +160,14 @@ jQuery(document).ready(function($){
 	ls.hook.add('ls_favourite_toggle_after',function(idTarget,objFavourite,type,params,result){
 		$('#fav_count_'+type+'_'+idTarget).text((result.iCount>0) ? result.iCount : '');
 	});
-	
+
 	// лента активности
 	ls.hook.add('ls_stream_append_user_after',function(length,data){
 		if (length==0) {
 			$('#strm_u_'+data.uid).parent().find('a').before('<a href="'+data.user_web_path+'"><img src="'+data.user_avatar_48+'" alt="avatar" class="avatar" /></a> ');
 		}
 	});
-	
+
 	// опрос
 	ls.hook.add('ls_pool_add_answer_after',function(removeAnchor){
 		var removeAnchor = $('<a href="#" class="glyphicon glyphicon-trash" />').attr('title', ls.lang.get('delete')).click(function(e){
@@ -230,23 +233,23 @@ jQuery(document).ready(function($){
 		$.markItUp({target: target, replaceWith: s});
 		return false;
 	});
-	
-	
+
+
 	// Фикс бага с z-index у встроенных видео
 	$("iframe").each(function(){
 		var ifr_source = $(this).attr('src');
 
 		if(ifr_source) {
 			var wmode = "wmode=opaque";
-				
-			if (ifr_source.indexOf('?') != -1) 
+
+			if (ifr_source.indexOf('?') != -1)
 				$(this).attr('src',ifr_source+'&'+wmode);
-			else 
+			else
 				$(this).attr('src',ifr_source+'?'+wmode);
 		}
 	});
-	
-	
+
+
 	// Bootstrap
 	if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 		var msViewportStyle = document.createElement("style")
@@ -257,8 +260,8 @@ jQuery(document).ready(function($){
 		)
 		document.getElementsByTagName("head")[0].appendChild(msViewportStyle)
 	}
-	
-	
+
+
 	// Хук конца инициализации javascript-составляющих шаблона
 	ls.hook.run('ls_template_init_end',[],window);
 });
