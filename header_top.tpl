@@ -1,7 +1,7 @@
 <header id="header" role="banner">
 	{hook run='header_banner_begin'}
 
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-navbar-collapse">
@@ -62,10 +62,6 @@
 			</div>
 		</div>
 	</nav>
-
-	{if $jumbotron}
-		{include file="jumbotron.$jumbotron.tpl"}
-	{/if}
 
 	{hook run='header_banner_end'}
 </header>

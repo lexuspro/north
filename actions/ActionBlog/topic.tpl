@@ -1,8 +1,4 @@
-{if $oTopic->getPreviewImageWebPath()}
-	{include file='header.tpl' jumbotron='topic'}
-{else}
-	{include file='header.tpl'}
-{/if}
+{include file='header.tpl'}
 
 
 {include file='topic.tpl'}

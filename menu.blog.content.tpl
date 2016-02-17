@@ -1,5 +1,5 @@
 {if $sMenuItemSelect=='index' or $sMenuItemSelect=='feed'}
-	<ul class="hidden-xs nav nav-pills nav-filter-wrapper">
+	<ul class="hidden-xs list-unstyled list-inline nav-filter-wrapper">
 		<li {if $sMenuSubItemSelect=='good'}class="active"{/if}><a href="{cfg name='path.root.web'}/">{$aLang.blog_menu_all_good}</a></li>
 		<li {if $sMenuSubItemSelect=='new'}class="active"{/if}>
 			{if $iCountTopicsNew>0}
@@ -46,7 +46,7 @@
 
 
 {if $sMenuItemSelect=='blog'}
-	<ul class="hidden-xs nav nav-pills nav-filter-wrapper">
+	<ul class="hidden-xs list-unstyled list-inline nav-filter-wrapper">
 		<li {if $sMenuSubItemSelect=='good'}class="active"{/if}><a href="{$sMenuSubBlogUrl}">{$aLang.blog_menu_collective_good}</a></li>
 		<li {if $sMenuSubItemSelect=='new'}class="active"{/if}>
 			{if $iCountTopicsBlogNew>0}
@@ -93,7 +93,7 @@
 
 
 {if $sMenuItemSelect=='log'}
-	<ul class="hidden-xs nav nav-pills nav-filter-wrapper">
+	<ul class="hidden-xs list-unstyled list-inline nav-filter-wrapper">
 		<li {if $sMenuSubItemSelect=='good'}class="active"{/if}><a href="{router page='personal_blog'}">{$aLang.blog_menu_personal_good}</a></li>
 		<li {if $sMenuSubItemSelect=='new'}class="active"{/if}>
 			{if $iCountTopicsPersonalNew>0}
