@@ -5,11 +5,6 @@
  * Содержит текстовки шаблона.
  */
 return array(
-	'footer_menu_user_profile' => 'Мой профиль',
-	'footer_menu_user_quest_title' => 'Вы можете',
-	'footer_menu_navigate_title' => 'Разделы',
-	'footer_menu_navigate_info' => 'Информация',
-
 	'footer_menu_project_about' => 'О проекте',
 	'footer_menu_project_rules' => 'Правила',
 	'footer_menu_project_advert' => 'Реклама',
@@ -24,6 +19,6 @@ return array(
 	'blogs_name_search' => 'Поиск по названию',
 	'people_name_search' => 'Поиск по логину',
 
-	'footer_menu_project_info' => '<b>Место для описания Вашего сайта. Изменить текст можно в файле russian.php шаблона.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae fermentum velit. Suspendisse porta faucibus tincidunt. Vivamus lacus magna, aliquam at tempor tempor, dignissim tincidunt turpis. Nam scelerisque sollicitudin metus ac interdum.',
+	'footer_menu_project_info' => '<b>Место для описания Вашего сайта. Изменить текст можно в файле russian.php шаблона.</b><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae fermentum velit. Suspendisse porta faucibus tincidunt. Vivamus lacus magna, aliquam at tempor tempor, dignissim tincidunt turpis. Nam scelerisque sollicitudin metus ac interdum.',
 );
 ?>

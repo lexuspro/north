@@ -2,7 +2,7 @@
 	{foreach from=$aBlogs item=oBlog}
 		<li>
 			<a href="{$oBlog->getUrlFull()}" class="blog-top" >{$oBlog->getTitle()|escape:'html'}</a>
-			<p class="small text-muted">{$aLang.blog_rating}: <strong>{$oBlog->getRating()}</strong></p>
+			<p class="small text-muted">{$aLang.blog_rating}: {$oBlog->getRating()}</p>
 		</li>
 	{/foreach}
 </ul>

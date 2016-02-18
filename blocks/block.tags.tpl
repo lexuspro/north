@@ -1,14 +1,14 @@
-<section class="panel panel-default block">
+<section class="panel panel-default block block-type-tags">
 	<div class="panel-body">
-	
+
 		<header class="block-header">
 			<h3>{$aLang.block_tags}</h3>
 		</header>
-	
-	
+
+
 		<div class="block-content">
 			{if $oUserCurrent}
-				<ul class="nav nav-pills">
+				<ul class="list-unstyled list-inline block-nav">
 					<li class="active js-block-tags-item" data-type="all"><a href="#">{$aLang.topic_favourite_tags_block_all}</a></li>
 					<li class="js-block-tags-item" data-type="user"><a href="#">{$aLang.topic_favourite_tags_block_user}</a></li>
 
@@ -42,6 +42,6 @@
 				</div>
 			{/if}
 		</div>
-	
+
 	</div>
 </section>
